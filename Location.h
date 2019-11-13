@@ -6,12 +6,10 @@ class STZone;
 #include <vector>
 class Location {
 public:
-	Location(std::vector<STZone>& locZones) : includes(locZones) {
-		
-	}
-	std::vector<STZone>& getLZones() {
-		return includes;
-	}
+	Location(std::vector<STZone>&);
+
+	std::vector<STZone>& getLZones();
+
 private:
 	std::vector<STZone>& includes;//works
 
