@@ -9,16 +9,13 @@
 #ifndef USERROLEASSIGNMENT_H
 #define USERROLEASSIGNMENT_H
 #include "UserRoleRelation.h"
-#include"User.h"
-#include"Role.h"
-#include"STZone.h"
+
+//Removed Include cases for user role and STZone as UserRoleRelation already initalized them before.
 
 class UserRoleAssignment: public UserRoleRelation {
 public:
 	UserRoleAssignment(User* u, Role& r,
-		STZone& z) :UserRoleRelation::UserRoleRelation(u, r, z) {
-
-	}
+		STZone& z);
 
 private:
 };
