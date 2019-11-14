@@ -13,6 +13,7 @@ public:
 	const User* getUser();
 	const Role& getRole();
 	const STZone& getZone();
+
 	
 private:
 	User* user; //URRUser association
