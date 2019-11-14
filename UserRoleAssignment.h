@@ -15,10 +15,7 @@
 
 class UserRoleAssignment: public UserRoleRelation {
 public:
-	UserRoleAssignment(User* u, Role& r,
-		STZone& z) :UserRoleRelation::UserRoleRelation(u, r, z) {
-
-	}
+	UserRoleAssignment(User* u, Role& r, STZone& z);
 
 private:
 };
