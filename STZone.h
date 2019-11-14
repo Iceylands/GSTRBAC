@@ -18,6 +18,8 @@ class User;
 
 
 #include <vector>
+#include <string>
+
 class STZone {
 public:
 	STZone(std::string&, Location&, std::vector<UserRoleRelation>&, TimeInterval&, std::vector<User>&, std::vector<Role>&,

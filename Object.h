@@ -5,6 +5,7 @@
 class STZone;
 class Permission;
 #include <vector>
+#include <string>
 class Object {
 public:
 	Object(std::string, std::vector<STZone>&, std::vector<Permission>&);

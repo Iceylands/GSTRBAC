@@ -14,11 +14,11 @@ public:
 
 	const std::array<Permission*, 2>& getInvolvedPermissions();
 
-	 STZone& getZone();
+	STZone& getZone();
 
-	 Permission* getFirstPermission();
+	Permission* getFirstPermission();
 
-	 Permission& getSecondPermission();
+	Permission& getSecondPermission();
 
 private:
 	STZone& zone;//PSSODZone association
