@@ -125,6 +125,7 @@
     <ClCompile Include="PSSOD.cpp" />
     <ClCompile Include="RoleHierarchy.cpp" />
     <ClCompile Include="STZone.cpp" />
+    <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="TimeInterval.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserRoleActivation.cpp" />

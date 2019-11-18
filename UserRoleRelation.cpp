@@ -13,12 +13,12 @@ UserRoleRelation(Role& r, //Old Constructor, Delete?
 
 }
 */
-const User* UserRoleRelation::getUser() const {
+const User* UserRoleRelation::getUser() {
 	return user;
 }
-const Role& UserRoleRelation::getRole() const {
+const Role& UserRoleRelation::getRole() {
 	return role;
 }
-const STZone& UserRoleRelation::getZone() const {
+const STZone& UserRoleRelation::getZone() {
 	return zone;
 }
