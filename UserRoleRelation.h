@@ -10,17 +10,10 @@ class STZone;
 class UserRoleRelation  {
 public:
 	UserRoleRelation(User* u, Role& r, STZone& z);
-	/*
-	UserRoleRelation(Role& r,
-		 STZone& z): role{ r }, zone{ z } {
+	const User* getUser();
+	const Role& getRole();
+	const STZone& getZone();
 
-	}
-	*/
-	const User* getUser() const;
-
-	const Role& getRole() const;
-
-	const STZone& getZone() const;
 	
 private:
 	User* user; //URRUser association
