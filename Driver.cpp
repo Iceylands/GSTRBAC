@@ -38,10 +38,10 @@ int main() {
 	vector<STZone> include{};
 	vector<STZone> rzones{};
 	TimeInterval intervals{include};
-	sManager.addTICount(&intervals);
+	sManager.addTICount(intervals);
 	string zName{ "zoning" };
 	Location zoneLoc(include);
-	sManager.addLocationCount(&zoneLoc);
+	sManager.addLocationCount(zoneLoc);
 	string name{ "Mustafa" };
 	vector<UserRoleRelation> testRelations{};
 
@@ -55,13 +55,18 @@ int main() {
 	vector<RoleHierarchy> zoneRH;
 	vector<STZone> locZones;
 		STZone tamiu{ zName,zoneLoc, testRelations, intervals, zoneUser, zoneRole, zonePermission, zoneObject, zonePermAssign, zoneSOD, zonePSSOD, zoneRH };
-		sManager.addZoneCount(&tamiu); //latest line added for SystemManager test
+		sManager.addZoneCount(tamiu);
 		
 		Location Home(locZones);
+		sManager.addLocationCount(Home);
 		Location developmentOffice(locZones);
+		sManager.addLocationCount(developmentOffice);
 		Location testingOffice(locZones);
+		sManager.addLocationCount(testingOffice);
 		Location directorOffice(locZones);
+		sManager.addLocationCount(directorOffice);
 		Location departmentBuilding(locZones);
+		sManager.addLocationCount(departmentBuilding); //latest line added for SystemManager test
 		string zName0{ "Department Building" };
 		string zName1{ "Home" };
 		string zName2{ "Develmopment Office" };
