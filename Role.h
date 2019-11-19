@@ -96,7 +96,6 @@ public:
 
 	const std::vector<Permission>& getAuthorizedPermissions(STZone& z);
 
-
 	//set and get functions for the role name
 	void setName(std::string given);
 
