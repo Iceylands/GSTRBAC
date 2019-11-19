@@ -14,7 +14,8 @@
 
 class UserRoleAssignment: public UserRoleRelation {
 public:
-	UserRoleAssignment(User* u, Role& r, STZone& z);
+	UserRoleAssignment(User* u, Role& r,
+		STZone& z);
 
 private:
 };
