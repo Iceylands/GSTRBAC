@@ -5,14 +5,13 @@
 #define PSSOD_H
 #include "Permission.h" // Included Permission -Rey 9-17-19
 #include <vector>
-#include <array>
 class Permission;
 class STZone;
 class PSSOD {
 public:
 	PSSOD(STZone&, Permission*, Permission&);
 
-	const std::array<Permission*, 2>& getInvolvedPermissions();
+	const std::vector<Permission>& getInvolvedPermissions();
 
 	 STZone& getZone();
 

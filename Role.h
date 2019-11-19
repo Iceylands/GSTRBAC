@@ -8,7 +8,8 @@ takes in rzones, pemAssig, relations, RH, SOD, sod*/
 
 #ifndef ROLE_H
 #define ROLE_H
-#include<vector>
+#include <iostream>
+#include <vector>
 #include <typeinfo>
 #include "A_Hierarchy.h"
 #include "I_Hierarchy.h"
@@ -191,9 +192,9 @@ public:
 				return true;
 			}
 		}
-											 // if r is in getJuniorRoles(STZone& z)
-											 // return true 
-											 // else return false 
+		// if r is in getJuniorRoles(STZone& z)
+		// return true 
+		// else return false 
 		return false;
 
 	}
@@ -207,7 +208,7 @@ public:
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 	const bool inheritsIH(Role& r, STZone& z) {// functioning and tested with both true and false  19
