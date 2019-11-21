@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{343E0A15-37B0-44FE-9A4A-3DE8F0047521}</ProjectGuid>
     <RootNamespace>UndergradProject</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -125,9 +125,12 @@
     <ClCompile Include="PSSOD.cpp" />
     <ClCompile Include="RoleHierarchy.cpp" />
     <ClCompile Include="STZone.cpp" />
+    <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="TimeInterval.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserRoleActivation.cpp" />
+    <ClCompile Include="UserRoleAssignment.cpp" />
+    <ClCompile Include="UserRoleRelation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Activity.h" />
@@ -144,6 +147,7 @@
     <ClInclude Include="SOD.h" />
     <ClInclude Include="SSOD.h" />
     <ClInclude Include="STZone.h" />
+    <ClInclude Include="SystemManager.h" />
     <ClInclude Include="TimeInterval.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserRoleActivation.h" />

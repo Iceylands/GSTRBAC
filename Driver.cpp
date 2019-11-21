@@ -6,9 +6,10 @@
 5- created the role object  faculty  (Mustafa 5-2-19)
 6- created the the STZoen object tamiu  (Mustafa 5-2-19) 
 7- Tested the assignRole() member function of the user class (Mustafa 5-2-19) 
+8- Added and tested SystemManager's functions and initial tracking ability (Marshal 11-18-19)
 */
 
-#include<iostream>
+#include <iostream>
 #include "User.h"
 #include "Role.h"
 #include "STZone.h"
@@ -20,11 +21,14 @@
 #include "SOD.h"
 #include "Location.h"
 #include "TimeInterval.h"
+#include "SystemManager.h"
 using namespace std;
 
 //you should include the other headers here
 
 int main() {
+	SystemManager sManager{};
+
 	string user1Name{ "Bob" };
 	string user2Name{ "Ben" };
 	string user3Name{ "Alice" };
@@ -34,8 +38,10 @@ int main() {
 	vector<STZone> include{};
 	vector<STZone> rzones{};
 	TimeInterval intervals{include};
+	sManager.addTICount(intervals);
 	string zName{ "zoning" };
 	Location zoneLoc(include);
+	sManager.addLocationCount(zoneLoc);
 	string name{ "Mustafa" };
 	vector<UserRoleRelation> testRelations{};
 
@@ -49,12 +55,18 @@ int main() {
 	vector<RoleHierarchy> zoneRH;
 	vector<STZone> locZones;
 		STZone tamiu{ zName,zoneLoc, testRelations, intervals, zoneUser, zoneRole, zonePermission, zoneObject, zonePermAssign, zoneSOD, zonePSSOD, zoneRH };
+		sManager.addZoneCount(tamiu);
 		
 		Location Home(locZones);
+		sManager.addLocationCount(Home);
 		Location developmentOffice(locZones);
+		sManager.addLocationCount(developmentOffice);
 		Location testingOffice(locZones);
+		sManager.addLocationCount(testingOffice);
 		Location directorOffice(locZones);
+		sManager.addLocationCount(directorOffice);
 		Location departmentBuilding(locZones);
+		sManager.addLocationCount(departmentBuilding); //latest line added for SystemManager test
 		string zName0{ "Department Building" };
 		string zName1{ "Home" };
 		string zName2{ "Develmopment Office" };
