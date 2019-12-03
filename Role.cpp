@@ -30,7 +30,27 @@ const A_Hierarchy& Role::addAHJuniorRole(Role& r, STZone& z) {// function 1
 	return ahObj;
 }
 void Role::deleteAHJuniorRole(Role& r, STZone& z) {//function 2
+	std::vector<RoleHierarchy> ahjRoles;
 
+	for (RoleHierarchy roleHierarchy : juniorRH) {
+		if (roleHierarchy.getJRole().getName() != r.getName()) {
+			ahjRoles.push_back(roleHierarchy);
+		}
+		else if (typeid(roleHierarchy) != typeid(A_HIERARCHY)) {
+			ahjRoles.push_back(roleHierarchy);
+		}
+		else if (roleHierarchy.getZone().getName() != z.getName()) {
+			ahjRoles.push_back(roleHierarchy);
+		}
+	}
+
+	for (int i = 0; i < juniorRH.size(); i++) {
+		juniorRH.pop_back();
+	}
+
+	for (RoleHierarchy roleH : ahjRoles) {
+		juniorRH.push_back(roleH);
+	}
 
 }
 //I_Hierarchy addition and deletion
@@ -43,7 +63,29 @@ const I_Hierarchy& Role::addIHJuniorRole(Role& r, STZone& z) {// function 3
 	return ihObj;
 }
 void Role::deleteIHJuniorRole(Role& r, STZone& z) { // function 4
+	std::vector<RoleHierarchy> ihjRoles;
 
+	for (RoleHierarchy roleHierarchy : juniorRH) {
+		if (roleHierarchy.getJRole().getName() != r.getName()) {
+			ihjRoles.push_back(roleHierarchy);
+		}
+		else if (typeid(roleHierarchy) != typeid(I_HIERARCHY)) {
+			ihjRoles.push_back(roleHierarchy);
+		}
+		else if (roleHierarchy.getZone().getName() != z.getName()) {
+			ihjRoles.push_back(roleHierarchy);
+		}
+	}
+
+	for (int i = 0; i < juniorRH.size(); i++) {
+		juniorRH.pop_back();
+	}
+
+	for (RoleHierarchy roleH : ihjRoles) {
+		juniorRH.push_back(roleH);
+	}
+
+	//juniorRH = ihjRoles;
 }
 //SSOD addition and deletion functions
 const SSOD& Role::addSSoDRole(Role& r, STZone& z) {// function 5
@@ -55,7 +97,29 @@ const SSOD& Role::addSSoDRole(Role& r, STZone& z) {// function 5
 	return ssodObj;
 }
 void Role::deleteSSoDRole(Role& r, STZone& z) {//function 6
+	std::vector<SOD> ssodRole;
 
+	for (SOD sod : sods) {
+		if (sod.getFirstRole().getName() != r.getName()) {
+			ssodRole.push_back(sod);
+		}
+		else if (typeid(sod) != typeid(SSOD)) {
+			ssodRole.push_back(sod);
+		}
+		else if (sod.getZone().getName() != z.getName()) {
+			ssodRole.push_back(sod);
+		}
+	}
+
+	for (int i = 0; i < sods.size(); i++) {
+		sods.pop_back();
+	}
+
+	for (SOD s : ssodRole) {
+		sods.push_back(s);
+	}
+
+	//sods = ssodRole;
 }
 //DSOD addition and deletion funtions
 const DSOD& Role::addDSoDRole(Role& r, STZone& z) { //function 7
@@ -67,7 +131,29 @@ const DSOD& Role::addDSoDRole(Role& r, STZone& z) { //function 7
 	return dsodOjb;
 }
 void Role::deleteDSoDRole(Role& r, STZone& z) {// function 8
+	std::vector<SOD> dsodRole;
 
+	for (SOD sod : sods) {
+		if (sod.getFirstRole().getName() != r.getName()) {
+			dsodRole.push_back(sod);
+		}
+		else if (typeid(sod) != typeid(DSOD)) {
+			dsodRole.push_back(sod);
+		}
+		else if (sod.getZone().getName() != z.getName()) {
+			dsodRole.push_back(sod);
+		}
+	}
+
+	for (int i = 0; i < sods.size(); i++) {
+		sods.pop_back();
+	}
+
+	for (SOD s : dsodRole) {
+		sods.push_back(s);
+	}
+
+	//sods = ssodRole;
 }
 //Permission Assignment additions and deletion funtions
 const PermissionAssignment* Role::assignPermission(Permission& p, STZone& z) {//function 9 
@@ -77,7 +163,26 @@ const PermissionAssignment* Role::assignPermission(Permission& p, STZone& z) {//
 	return paPtr;
 }
 void Role::deassignPermission(Permission& p, STZone& z) {//function 10
+	std::vector<STZone> pZones = p.getPermissionZones();
+	std::vector<PermissionAssignment*> pAssign;
 
+	for (PermissionAssignment* pa : permAssig) {
+		for (STZone zones : pZones) {
+			if (pa->getPAZone().getName() != zones.getName()) {
+				pAssign.push_back(pa);
+			}
+		}
+	}
+
+
+	for (int i = 0; i < permAssig.size(); i++) {
+		permAssig.pop_back();
+	}
+
+	for (PermissionAssignment* permA : pAssign) {
+		permAssig.push_back(permA);
+	}
+	//permAssig = pAssign;
 }
 //get SSOD Roles
 const std::vector<Role>& Role::getSSoDRoles(STZone& z) {// function 11
@@ -122,6 +227,7 @@ const std::vector<Role>& Role::getJuniorRoles(STZone& z) {//function 13
 
 	return juniorRoles;
 }
+
 const std::vector<Role>& Role::getAHJuniorRoles(STZone& z) {//function 14
 	std::vector<Role> ahjRoles;
 
@@ -161,8 +267,17 @@ const std::vector<Role>& Role::getPrerequisiteRoles() {// functions 16
 void Role::addPrerequisiteRole(Role& r) {
 	prerequisitRoles.push_back(r);
 }
-void Role::removePrerequisiteRole(Role& r) {
 
+void Role::removePrerequisiteRole(Role& r) {
+	std::vector<Role> preRoles;
+
+	for (Role roles : prerequisitRoles) {
+		if (roles.getName() != r.getName()) {
+			preRoles.push_back(roles);
+		}
+	}
+
+	//prerequisitRoles = preRoles;
 }
 //	void addRequistorRole(Role& r) {}
 
@@ -210,18 +325,51 @@ const bool Role::inheritsIH(Role& r, STZone& z) {// functioning and tested with 
 }
 const std::vector<Role>& Role::getAllAHInheritedRoles(STZone& z) {// function 20 
 	std::vector<Role> allAHIRoles;
-	return allAHIRoles;
+	std::vector<Role> allAHJuniorInheritedRoles;
+
+	for (Role role : allAHIRoles) {
+		if (inheritsAH(role, z) == true) {
+			allAHJuniorInheritedRoles.push_back(role);
+		}
+	}
+
+	return allAHJuniorInheritedRoles;
 }
 const std::vector<Role>& Role::getAllIHInheritedRoles(STZone& z) {//function 21
 	std::vector<Role> allIHIRoles;
-	return allIHIRoles;
+	std::vector<Role> allIHJuniorInheritedRoles;
+
+	for (Role role : allIHIRoles) {
+		if (inheritsAH(role, z) == true) {
+			allIHJuniorInheritedRoles.push_back(role);
+		}
+	}
+
+	return allIHJuniorInheritedRoles;
 }
 const std::vector<Permission>& Role::getAssignedPermissions(STZone& z) {//function 22
 	std::vector<Permission> assignedP;
+
+	for (PermissionAssignment* pa : permAssig) {
+		STZone zone = pa->getPAZone();
+		if (zone.getName() == z.getName()) {
+			assignedP.push_back(pa->getPAPermission());
+		}
+	}
+
 	return assignedP;
 }
 const std::vector<Permission>& Role::getAuthorizedPermissions(STZone& z) {//function 23
 	std::vector<Permission> authorizedP;
+
+	for (Permission pa : authorizedPerm) {
+		for (STZone zone : pa.getPermissionZones()) {
+			if (zone.getName() == z.getName()) {
+				authorizedP.push_back(pa);
+			}
+		}
+	}
+
 	return authorizedP;
 }
 //set and get functions for the role name
@@ -238,13 +386,17 @@ const std::vector<STZone>& Role::getEnabledZone() const {
 	return rzones;
 }
 
+void Role::authorizePermission(const Permission& perm) {
+	authorizedPerm.push_back(perm);
+}
+
 void Role::getZoneName() {
 	for (auto zones : rzones) {
 		std::cout << zones.getName() << "\n";
 	}
 }
 
-void Role::disableZone(const STZone& zone) {
+void Role::disableZone(STZone& zone) {
 	std::size_t size;
 	static std::vector<STZone> temp{};
 

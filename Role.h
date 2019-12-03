@@ -8,6 +8,7 @@ takes in rzones, pemAssig, relations, RH, SOD, sod*/
 
 #ifndef ROLE_H
 #define ROLE_H
+#include <vector>
 #include <typeinfo>
 #include "A_Hierarchy.h"
 #include "I_Hierarchy.h"
@@ -27,7 +28,6 @@ std::vector<STZone>& rzones;//RoleZone association
 std::vector<RoleHierarchy>& RH;//RH1Role association
 std::vector<RoleHierarchy>& rh;//RH2Role association
 std::vector<SOD>& sods;//SOD1&2Role association*/
-#include <vector>
 class Role {
 public:
 	Role(std::string n, std::vector<UserRoleRelation>& r, std::vector<STZone>& rz, std::vector<RoleHierarchy>& R,
@@ -107,12 +107,15 @@ public:
 
 	void getZoneName();
 
-	void disableZone(const STZone& zone);
+	void disableZone(STZone& zone);
+
+	void authorizePermission(const Permission& perm);
 
 private:
 	std::string name;
 	std::vector<UserRoleRelation>& relations;//  URRRole association
-	std::vector<STZone> rzones;//RoleZone association
+	std::vector<STZone>& rzones;//RoleZone association
+	std::vector<Permission> authorizedPerm;
 	std::vector<RoleHierarchy>& juniorRH;//RH1Role association
 	std::vector<RoleHierarchy>& seniorRH;//RH2Role association
 	std::vector<SOD>& sods;//SOD1&2Role association

@@ -162,7 +162,20 @@ const std::vector<Role>& User::getAuthorizedRoles(STZone& z) {
 }
 
 const bool User::checkAccess(Object& o, Activity& a, STZone& z) {
-	return true;
+	std::vector<Role> activatedRoles = getActivatedRoles(z);
+	std::vector<Permission> permissions = a.getPermissions();
+
+	for (Role role : activatedRoles) {
+		for (Permission perm : role.getAssignedPermissions(z)) {
+			for (Permission perm2 : permissions) {
+				if (perm2.getPermissionObject().getObjName() == perm.getPermissionObject().getObjName()) {
+					return true;
+				}
+			}
+		}
+	}
+	
+	return false;
 
 }
 // You need to include the other member functions signatures here 
